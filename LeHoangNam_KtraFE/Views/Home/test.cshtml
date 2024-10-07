@@ -1,0 +1,446 @@
+﻿@{
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+<style type="text/css">
+    .container{
+        display:flex;
+        padding:10px;
+        justify-content:center;
+        background-color:lightgray;
+       
+    }
+    
+    .column{
+        flex:0 1 30%;      
+        padding:10px;
+        text-align:center;
+       border:1px solid #ccc
+
+    }
+    .left-column{
+        display:flex
+        background-color:white;
+        border-radius:7px;
+        margin-right:10px;
+    }
+    .between-column {
+        background-color: white;
+       display:flex;
+       margin-right:10px;
+       flex-direction:column;
+       justify-content:space-between;
+       padding:20px;
+       border-radius:10px;
+       box-shadow:0px 4px 12px rgba(0,0,0,0.1);
+       
+    }
+    .right-column {
+        display:flex;
+        background-color: white;
+        border-radius:7px;
+    }
+    .highlight {
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .highlight span {
+            display: inline-block;
+            padding: 5px 10px;
+            font-size: 10px;
+        }
+
+        .highlight.top-deal {
+            background-color: lightcoral;
+            color: red;
+            font-weight: bold;
+        }
+
+        .highlight.return-policy {
+            background-color: yellow;
+            color: blue;
+            font-weight: bold;
+        }
+
+        .highlight.authentic {
+            background-color: lightgray;
+            color: blue;
+            font-weight: bold;
+        }
+    .product-title{
+        font-size:14px;
+        margin-bottom:15x 0;
+        font-weight:bold;
+    }
+    .product-price{
+        font-size:14px;
+        margin-bottom:15px;
+    }
+    .product-rating{
+        display:flex;
+        align-items:center;
+        margin-bottom:105x;
+        
+    }
+    .product-rating i{
+        color:#f5a623;
+        margin-right:5px;
+    }
+    .product-rating span{
+        margin-left:5px;
+        color:#999;
+    }
+    .flavor{
+        margin:10px 0px;
+    }
+    .flavor label{
+        font-size:14px;
+    }
+    .flavor select{
+        padding :5px;
+        border:1px solid #007bff;
+        border-radius:5px;
+        color:#007bff;
+    }
+    .shipping-info .additional-service{
+        margin:20px 0;
+        padding:10px;
+        background-color:#f9f9f9;
+        border-radius:8px;
+    }
+    .shipping-info h3,.additional-service h3{
+        font-size:14px;
+        font-weight:bold;
+        margin:0 0 10px 0;
+    }
+    .shipping-info p,.additional-service p{
+        font-size:12px;
+        margin:5px 0;
+    }
+    .shipping-info .change-location{
+        color:#007bff;
+        font-size:12px;
+        cursor:pointer;
+    }
+    .shipping-info.now,.shipping-info.tomorrow{
+        display:flex;
+        align-items:center;
+        gap:10px;
+    }
+    .shipping-info.now span,.shipping-info.tomorrow span{
+        font-size:14px;
+    }
+    .shipping-info.now.free,.shipping-info.tomorrow.free{
+        color:#00a650;
+        font-weight:bold;
+    }
+    .shipping-info.now.old-price,.shipping-info.tomorrow.old-price{
+        text-decoration:line-through;
+        color:#757575;
+    }
+    .shipping-info.freeship{
+        font-size:14px;
+        color:#757575;
+    }
+    .additional-service.service{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:10px 0;
+    }
+    .additional-service.service img{
+        width:30px;
+        height:30px;
+    }
+    .additional-service.service.register{
+        color:#007bff;
+        font-size:14px;
+        cursor:pointer;
+    }
+    .product-images{
+        text-align:center;
+        margin-bottom:10px;
+    }
+    .product-images img{
+        max-width:100%;
+    }
+    .product-thumbnails{
+        display:flex;
+        justify-content:center;
+    }
+    .product-thumbnails img{
+        width:40px;
+        height:40px;
+        margin:0 5px;
+        cursor:pointer;
+    }
+    .purchase-section.vendor-info{
+        display:flex;
+        align-items:center;
+        margin-bottom:20px;
+    }
+    .vendor-info img{
+        border-radius:50%;
+        margin-right:10px;
+    }
+    .vendor-info.vendor-name{
+        font-size:14px;
+        font-weight:500;
+        
+    }
+    .quantity-section{
+        display:flex;
+        align-items:center;
+        margin-bottom:20px;
+    }
+    .quantity-section span{
+        margin-right:10px;
+    }
+    .quantity-section input{
+        width:40px;
+        text-align:center;
+        border:1px solid #e0e0e0;
+        border-radius:4px;
+        margin:0px 5px;
+    }
+    .price-section{
+        font-size:16px;
+        margin-bottom:15px;
+        color:#757575;
+    }
+    .price-section span{
+        font-weight:500;
+    }
+    .total-price{
+        font-size:20px;
+        font-weight:700;
+        color:#d32f2f;
+        margin-bottom:20px;
+    }
+    .total-price span{
+        display:inline-block;
+        margin-right:10px;
+    }
+    .quantity-section{
+        display:flex;
+        align-items:center;
+        margin-bottom:20px;
+    }
+    .quantity-section input{
+        width:60px;
+        text-align:center;
+        border:1px solid #e0e0e0;
+        border-radius:4px;
+        margin:0 10px;
+        padding:5px;
+        font-size:16px;
+    }
+    .quantity-section span{
+        font-size:16px;
+        font-weight:500;
+    }
+    .purchase-button button{
+        width:100%;
+        padding:10px;
+        border:none;
+        border-radius:4px;
+        cursor:pointer;
+        margin-bottom:10px;
+    }
+    .purchase-button.buy-now{
+        background-color:#d32f2f;
+        color:white;
+    }
+    .purchase-button.add-to-cart,.purchase-button.buy-later{
+        background-color:white;
+        color:deepskyblue;
+        border:1px solid deepskyblue;
+
+    }
+</style>
+
+<div class="container">
+    <div class="column">
+        <div class="left-column">
+            <div class="product-images">
+                <img height="400" width="400" src="~/Content/images/ảnh sp.png" />
+            
+            </div>
+            <div class="product-thumbnails">
+
+                <img alt="Thumbnail 1" height="40" src="~/Content/images/ảnh mẫu 1.png" width="40" />
+
+                <img alt="Thumbnail 2" height="40" src="~/Content/images/ảnh mẫu 2.png" width="40" />
+
+                <img alt="Thumbnail 3" height="40" src="~/Content/images/ảnh mãu 3.png" width="40" />
+
+                <img alt="Thumbnail 4" height="40" src="~/Content/images/ảnh mẫu 4.png" width="40" />
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="between-column">
+            <div class="between-column1">
+                <div class="highlight">
+                    <span class="top-deal">
+                        TOP DEAL
+                    </span>
+                    <span class="return-policy">
+                        30 NGÀY ĐỔI TRẢ
+                    </span>
+                    <span class="authentic">
+                        CHÍNH HÃNG
+                    </span>
+                    <span>
+                        Thương hiệu: Glucerna
+                    </span>
+                </div>
+                <div class="product-title">
+                    Lon Sữa Glucerna 800g/lon - Tặng 2 gói dùng thử
+                </div>
+                <div class="product-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span>
+                        (436 đánh giá)
+                    </span>
+                </div>
+                <div class="product-price">
+                    1.034.550đ
+                </div>
+                <div class="flavor">
+                    <label for="flavor">
+                        Hương vị
+                    </label>
+                        <select id="flavor">
+                            <option>
+                                Vani
+                            </option>
+                        </select>
+                </div>
+                <div class="shipping-info">
+                    <h3>
+                        Thông tin vận chuyển
+                    </h3>
+                    <p>
+                        Giao đến Q.1, P.Bến Nghé, Hồ Chí Minh
+                        <span class="change-location">
+                            Đổi
+                        </span>
+                    </p>
+                    <div class="now">
+                        <span class="now-label">
+                            Giao siêu tốc 2h
+                        </span>
+                        <span class="free">
+                            Miễn phí
+                        </span>
+                        <span class="old-price">
+                            25.000đ
+                        </span>
+                    </div>
+                    <div class="tomorrow">
+                        <span class="tomorrow-label">
+                            Giao đúng sáng mai
+                        </span>
+                        <span class="free">
+                            Miễn phí
+                        </span>
+                        <span class="old-price">
+                            19.000đ
+                        </span>
+                    </div>
+                    <p class="freeship">
+                        Freeship 10k đơn từ 45k, Freeship 25k đơn từ 100k
+                    </p>
+                </div>
+                <div class="additional-service">
+                    <h3>
+                        Dịch vụ bổ sung
+                    </h3>
+                    <div class="service">
+                        <div class="service-info">
+                            <img height="30" width="30" src="~/Content/images/tikicard.png" />
+                       <span>
+                           Ưu đãi đến 600k với thẻ TikiCard
+                       </span>
+                        </div>
+                        <span class="register">
+                            Đăng ký
+                        </span>
+                    </div>
+                    <div class="service">
+                        <div class="service-info">
+                            <img height="30" width="30" src="~/Content/images/Screenshot 2024-10-05 112111.png" />
+                       <span>
+                           Mua trước trả sau
+                       </span>
+                        </div>
+                        <span class="register">
+                            Đăng ký
+                        </span>
+                    </div>
+                </div> 
+            </div>       
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="purchase-section">
+            <div class="vendor-info">
+                
+                <img height="40" width="40" src="~/Content/images/logo.png" />
+                <h1 class="vendor-name">
+                    Tiki Trading
+                </h1>
+            <div>            
+            </div>
+            </div>
+            <div class="quantity-section">
+                <span>
+                    Số lượng
+                </span>
+                <input type="number" id="quantity" value="1" min="1"  onchange="calculateTotal()" />
+            </div>
+            <div class="price-section">
+                <span>Giá sản phẩm: </span>
+                <span id="price" data-value="1.034.550">1.034.550</span>
+            </div>
+            <div class="total-price">
+               <span>Tạm tính: </span>
+               <span id="subtotal">1.034.550đ</span> 
+            </div>
+            <div class="purchase-button">
+                <button class="buy-now">
+                    Mua ngay
+                </button>
+                <button class="add-to-cart">
+                    Thêm vào giỏ
+                </button>
+                <button class="buy-later">
+                    Mua trước trả sau
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script language="Javascript">
+    function calculateTotal() {
+        const quantity = document.getElementById('quantity').value;
+        const priceElement = document.getElementById('price');
+        const price = parseFloat(priceElement.getAttribute('data-value'));
+        const subtotal = quantity * price;
+        const formattedSubtotal = new Int1.NumberFormat('vi-VN', {
+            style: 'curency',
+            currency: 'VND'
+        }).format(subtotal);
+        document.getElementById('subtotal').textContent = formattedSubtotal;
+    }
+</script>   
+
+
